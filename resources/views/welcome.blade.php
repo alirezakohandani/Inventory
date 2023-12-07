@@ -6,7 +6,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-<h1 class="text-3xl font-bold underline">
+<h1 class="text-3xl font-bold underline font-iransans">
     Hello world!
 </h1>
 </body>
