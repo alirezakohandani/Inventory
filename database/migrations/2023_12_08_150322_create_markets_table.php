@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->string('image')->nullable();
             $table->boolean('is_active')->default(1);
-            $table->foreignId('parent_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('parent_id')->nullable()->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -45,14 +45,13 @@ return new class extends Migration
         });
 
         Schema::create('attribute_category', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('attribute_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->boolean('is_filter')->default(0);
             $table->boolean('is_variation')->default(0);
             $table->timestamps();
             $table->softDeletes();
-            $table->primary(['category_id','attribute_id']);
+            $table->primary(['category_id', 'attribute_id']);
         });
         
 
